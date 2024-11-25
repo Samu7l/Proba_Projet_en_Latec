@@ -279,6 +279,103 @@
     \end{figure}
     \subsection*{(c) Linear relation between the limiting distributions of $(\alpha_n)_{n \in \mathbb{N}}$, $(X_n)_{n \in \mathbb{N}}$, and $(W_n)_{n \in \mathbb{N}}$}
 
+    \section*{Back to coral reefs}
+    \subsection*{Question 14}
+    
+    %A discrete-time Markov chain is a sequence of random variables X1, X2, X3, ... with the Markov property, namely that the probability of moving to the next state depends only on the present state and not on the previous states : [wikipedia]
+
+    We know that global warming starts at +0C° of the current global temperature.\\
+    So we will define 0C° as $X_0$.\\
+    Then, let $X_i$ be the state for which the global warming is at $i\times0.2C°$. $i\in \mathbb{Z}$\\
+    For example, at state $X_{-2}$, the global warming temperature will be -0.4C°.\\
+    \\
+    All these states are related to each other with the relations :
+    \begin{itemize}
+        \item +0.2C, probability of 50\%
+        \item -0.2C, probability of 20\%
+        \item remain the same, probability of 30\%
+    \end{itemize}
+    From this we can create a graph representing these states (It is an infinite graph)
+
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+            % Set the radius for the circular arrangement of nodes
+
+            % Draw the nodes in a circular arrangement
+            \node [circle,draw,minimum size=4em,fill=lightgray!80!black] (B) at (-8,0) {\ldots};
+            \node [circle,draw,minimum size=4em] (C) at (-6,0) {-0.6C°};
+            \node [circle,draw,minimum size=4em] (D) at (-4,0) {-0.4C°};
+            \node [circle,draw,minimum size=4em] (E) at (-2,0) {-0.2C°};
+            \node [circle,draw,minimum size=4em] (F) at (0,0) {0C°};
+            \node [circle,draw,minimum size=4em] (G) at (2,0) {0.2C°};
+            \node [circle,draw,minimum size=4em] (H) at (4,0) {0.4C°};
+            \node [circle,draw,minimum size=4em] (I) at (6,0) {0.6C°};
+            \node [circle,draw,minimum size=4em,fill=lightgray!80!black] (J) at (8,0) {\ldots};
+
+            \path[->, shorten >= 1mm, every edge] (B) to[bend left] node[midway,sloped,above=5px]{0.5} (C); 
+            \path[->, shorten >= 1mm, every edge] (C) to[bend left] node[midway,below=5px]{0.2} (B);
+            \path[->, shorten >= 1mm, every edge] (C) to[loop above] node[midway]{0.3} (C);
+
+            \path[->, shorten >= 1mm, every edge] (C) to[bend left] node[midway,sloped,above=5px]{0.5} (D); 
+            \path[->, shorten >= 1mm, every edge] (D) to[bend left] node[midway,below=5px]{0.2} (C);
+            \path[->, shorten >= 1mm, every edge] (D) to[loop above] node[midway]{0.3} (D);
+
+            \path[->, shorten >= 1mm, every edge] (D) to[bend left] node[midway,sloped,above=5px]{0.5} (E); 
+            \path[->, shorten >= 1mm, every edge] (E) to[bend left] node[midway,below=5px]{0.2} (D);
+            \path[->, shorten >= 1mm, every edge] (E) to[loop above] node[midway]{0.3} (E);
+
+            \path[->, shorten >= 1mm, every edge] (E) to[bend left] node[midway,sloped,above=5px]{0.5} (F); 
+            \path[->, shorten >= 1mm, every edge] (F) to[bend left] node[midway,below=5px]{0.2} (E);
+            \path[->, shorten >= 1mm, every edge] (F) to[loop above] node[midway]{0.3} (F);
+
+            \path[->, shorten >= 1mm, every edge] (F) to[bend left] node[midway,sloped,above=5px]{0.5} (G); 
+            \path[->, shorten >= 1mm, every edge] (G) to[bend left] node[midway,below=5px]{0.2} (F);
+            \path[->, shorten >= 1mm, every edge] (G) to[loop above] node[midway]{0.3} (G);
+
+            \path[->, shorten >= 1mm, every edge] (G) to[bend left] node[midway,sloped,above=5px]{0.5} (H); 
+            \path[->, shorten >= 1mm, every edge] (H) to[bend left] node[midway,below=5px]{0.2} (G);
+            \path[->, shorten >= 1mm, every edge] (H) to[loop above] node[midway]{0.3} (H);
+
+            \path[->, shorten >= 1mm, every edge] (H) to[bend left] node[midway,sloped,above=5px]{0.5} (I); 
+            \path[->, shorten >= 1mm, every edge] (I) to[bend left] node[midway,below=5px]{0.2} (H);
+            \path[->, shorten >= 1mm, every edge] (I) to[loop above] node[midway]{0.3} (I);
+
+            \path[->, shorten >= 1mm, every edge] (I) to[bend left] node[midway,sloped,above=5px]{0.5} (J); 
+            \path[->, shorten >= 1mm, every edge] (J) to[bend left] node[midway,below=5px]{0.2} (I);
+
+        \end{tikzpicture}
+        \caption{Markov chain of global warming possibilities}
+    \end{figure}
+    And we can create the corresponding (infinite) Markov matrix.\\
+    $\frac{1}{10} \times
+    \begin{pmatrix}
+        3 & 5 & 0 & \cdots & 0 & 0 & 0\\
+        2 & 3 & 5 & & 0 & 0 & 0\\
+        0 & 2 & 3 & \ddots & 0 & 0 & 0\\
+        \vdots & & \ddots& \ddots & \ddots & &\vdots\\
+        0 & 0 & 0 & \ddots & 3 & 5 & 0\\
+        0 & 0 & 0 & & 2 & 3 & 5\\
+        0 & 0 & 0 & \cdots & 0 & 2 & 3\\
+    \end{pmatrix}_k$\\
+    It can be said that the probabilities on the borders do not add up to 1, but this is inevitable as we cannot create a truly infinite matrix.\\
+    We are just estimating the matrix around the state $X_0$, so we will take a matrix of size $k = 2\times Y + 1$, Y beeing the number of decades since the start of global warming.
+
+    \subsection*{Question 15}
+
+    It is said that the coral reefs will die if the temperature gets to +0.6C°.
+    \\This corresponts to the state $X_3$
+    \\So The average lifespan (or the life expectancy) of the coral reefs will be :\\
+    The decade at which the probability of beeing in a state where $P(X_{i\geq3})$ is more than 50\%\\
+    \\
+    Using matlab to make a code that calculates this probability, depending on the number of decades elapsed.\\
+    We obtain : at 9 decades $P(X_{i\geq3}) = 0.5465$\\
+    \\
+    This means that in this new case, the coral reefs are expected to live around 90 more years.
+
+    \subsection*{Question 16}
+
+
 
 \end{document}
 
