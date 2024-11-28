@@ -291,8 +291,8 @@
     \\
     All these states are related to each other with the relations :
     \begin{itemize}
-        \item +0.2C, probability of 50\%
-        \item -0.2C, probability of 20\%
+        \item +0.2C°, probability of 50\%
+        \item -0.2C°, probability of 20\%
         \item remain the same, probability of 30\%
     \end{itemize}
     From this we can create a graph representing these states (It is an infinite graph)
@@ -350,13 +350,13 @@
     And we can create the corresponding (infinite) Markov matrix.\\
     $\frac{1}{10} \times
     \begin{pmatrix}
-        3 & 5 & 0 & \cdots & 0 & 0 & 0\\
-        2 & 3 & 5 & & 0 & 0 & 0\\
-        0 & 2 & 3 & \ddots & 0 & 0 & 0\\
-        \vdots & & \ddots& \ddots & \ddots & &\vdots\\
-        0 & 0 & 0 & \ddots & 3 & 5 & 0\\
-        0 & 0 & 0 & & 2 & 3 & 5\\
-        0 & 0 & 0 & \cdots & 0 & 2 & 3\\
+        3       & 5      & 0      & \cdots & \cdots  & 0      & 0     \\
+        2       & 3      & 5      & 0      & \cdots  & 0      & 0     \\
+        0       & 2      & 3      & \ddots & \ddots  & \vdots & \vdots\\
+        \vdots  & 0      & \ddots & \ddots & \ddots  & 0      & \vdots\\
+        \vdots  & \vdots & \ddots & \ddots & 3       & 5      & 0     \\
+        0       & 0      & \cdots & 0      & 2       & 3      & 5     \\
+        0       & 0      & \cdots & \cdots & 0       & 2      & 3     \\
     \end{pmatrix}_k$\\
     It can be said that the probabilities on the borders do not add up to 1, but this is inevitable as we cannot create a truly infinite matrix.\\
     We are just estimating the matrix around the state $X_0$, so we will take a matrix of size $k = 2\times Y + 1$, Y beeing the number of decades since the start of global warming.
@@ -365,18 +365,36 @@
 
     It is said that the coral reefs will die if the temperature gets to +0.6C°.
     \\This corresponts to the state $X_3$
-    \\So The average lifespan (or the life expectancy) of the coral reefs will be :\\
-    The decade at which the probability of beeing in a state where $P(X_{i\geq3})$ is more than 50\%\\
-    \\
-    Using matlab to make a code that calculates this probability, depending on the number of decades elapsed.\\
-    We obtain : at 9 decades $P(X_{i\geq3}) = 0.5465$\\
-    \\
+    So The average lifespan (or the life expectancy) of the coral reefs will be :\\
+    The decade at which the probability of beeing in a state where $P(X_{i\geq3})$ is more than 50\%
+    
+    Using matlab to make a code that calculates this probability, depending on the number of decades elapsed.
+    We obtain : at 9 decades $P(X_{i\geq3}) = 0.5465$
+    
     This means that in this new case, the coral reefs are expected to live around 90 more years.
 
     \subsection*{Question 16}
+    
+    Using probability laws, we can calculate the expected value :
 
-    Using probabilities, we can calculate the esperance
-    %Use esperance [E(X)] with probabilities than lifespan = max / E(X) ?
+    $\begin{array}{lllll}
+       &                 & E(\mathbb{X}) &= & 0.2\times P(+0.2C) +(-0.2)\times P(-0.2C) + 0\times P(\pm 0)\\
+       & \Leftrightarrow & E(\mathbb{X}) &= & 0.2\times 0.5 - 0.2\times 0.2 + 0\times 0.3 \\
+       & \Leftrightarrow & E(\mathbb{X}) &= & 0.6 \\
+    \end{array}$
+
+    We know the expected value is how much the random variable will change after each event
+    
+    So After N events the average change will be $N\times E$.
+
+    Here, $E>0$ So we can have $N\times E(X)=0.6$,$N>0$ 
+
+    0.6 being the stopping factor, because the corals will die.
+
+    So we can search for N in this expression, $N= \frac{0.6}{E(X)} = 10$
+
+    So the theorical average lifespan is 10 decades, 100 years or a century.
+
 
     \section*{To go Further}
 
